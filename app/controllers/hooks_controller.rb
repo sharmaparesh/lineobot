@@ -1,5 +1,6 @@
 class HooksController < ApplicationController
   before_action :set_hook, only: [:show, :destroy]
+  protect_from_forgery except: :callback
 
   # GET /hooks
   # GET /hooks.json
