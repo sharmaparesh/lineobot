@@ -51,6 +51,15 @@ class HooksController < ApplicationController
         end
       end
     end
+    client.push_message(events[0]['source']['userId'], {
+      type: 'text',
+      text: 'Have some tea!!!'
+    })
+    client.push_message(events[0]['source']['userId'], {
+      type: 'sticker',
+      packageId: 4,
+      stickerId: 299
+    })
     head :ok
   end
 
