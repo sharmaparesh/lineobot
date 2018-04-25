@@ -7,7 +7,7 @@ class HooksController < ApplicationController
   # GET /hooks
   # GET /hooks.json
   def index
-    @hooks = Hook.all
+    set_page_and_extract_portion_from Hook.order(created_at: :desc)
   end
 
   # GET /hooks/1

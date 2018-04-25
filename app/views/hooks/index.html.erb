@@ -2,6 +2,8 @@
 
 <h1>Hooks</h1>
 
+Showing page <%= @page.number %> of <%= @page.recordset.page_count %> (<%= @page.recordset.records_count %> total messages):
+
 <table>
   <thead>
     <tr>
@@ -11,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @hooks.each do |hook| %>
+    <% @page.records.each do |hook| %>
       <tr>
         <td><%= hook.payload %></td>
         <td><%= link_to 'Show', hook %></td>
@@ -19,4 +21,10 @@
       </tr>
     <% end %>
   </tbody>
+
+  <% if @page.last? %>
+    No more pages!
+  <% else %>
+    <%= link_to "Next page", hooks_path(page: @page.next_number) %>
+  <% end %>
 </table>
