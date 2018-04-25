@@ -23,7 +23,7 @@ class HooksController < ApplicationController
     end
 
     h = Hook.new
-    h.payload = params
+    h.payload = params.merge(http_x_line_signature: request.env['HTTP_X_LINE_SIGNATURE'])
     h.save
 
     # events = client.parse_events_from(body)
